@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DeliveryRequest;
+use App\Http\Requests\StoreDeliveryRequest;
 
 
 class DeliveryRequestController extends Controller
@@ -19,40 +20,13 @@ class DeliveryRequestController extends Controller
         return view('delivery-request.index', compact('requests'));
     }
 
-    public function store(Request $request)
+    public function store(StoreDeliveryRequest $request)
     {
-        $validated = $request->validate([
-            // Pickup
-            'pickup_address' => 'required',
-            'pickup_name' => 'required',
-            'pickup_contact_no' => 'required',
-            'pickup_email' => 'nullable|email',
+        DeliveryRequest::create($request->validated());
 
-            // Delivery
-            'delivery_address' => 'required',
-            'delivery_name' => 'required',
-            'delivery_contact_no' => 'required',
-            'delivery_email' => 'nullable|email',
-
-            // Shipment
-            'type_of_good' => 'required|in:Document,Parcel',
-            'delivery_provider' => 'required|in:DHL,STARTRACK,ZOOM2U,TGE',
-            'priority' => 'required|in:Standard,Express,Immediate',
-            'shipment_pickup_date' => 'required|date',
-            'shipment_pickup_time' => 'required',
-
-            // Package
-            'package_description' => 'required',
-            'length' => 'required|numeric',
-            'height' => 'required|numeric',
-            'width' => 'required|numeric',
-            'weight' => 'required|numeric',
-        ]);
-
-        DeliveryRequest::create($validated);
-        return redirect()->route('delivery-request.create')->with('success', 'Delivery request submitted!');
-
-
+        return redirect()
+            ->route('delivery-request.create')
+            ->with('success', 'Delivery request submitted successfully!');
     }
 
     public function cancel($id)
