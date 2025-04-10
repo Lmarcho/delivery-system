@@ -18,4 +18,4 @@ Route::get('/', [DeliveryRequestController::class, 'create']);
 Route::get('/delivery-request/create', [DeliveryRequestController::class, 'create'])->name('delivery-request.create');
 Route::post('/delivery-request', [DeliveryRequestController::class, 'store'])->name('delivery-request.store');
 Route::get('/delivery-requests', [DeliveryRequestController::class, 'index'])->name('delivery-request.index');
-Route::patch('/delivery-request/{id}/cancel', [DeliveryRequestController::class, 'cancel'])->name('delivery-request.cancel');
+Route::post('/delivery-request/{id}/cancel', [\App\Http\Controllers\DeliveryRequestController::class, 'cancel'])->name('delivery-request.cancel');
