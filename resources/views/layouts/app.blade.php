@@ -21,7 +21,10 @@
             <!-- Navigation links -->
             <div class="flex items-center space-x-4">
                 <a href="{{ route('delivery-request.create') }}" class="px-4 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition">
-                    New Request
+                    New Request (Blade)
+                </a>
+                <a href="{{ route('delivery-request.vue') }}" class="px-4 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-purple-600 hover:bg-purple-50 transition">
+                    New Request (Vue)
                 </a>
                 <a href="{{ route('delivery-request.index') }}" class="px-4 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition">
                     View Requests

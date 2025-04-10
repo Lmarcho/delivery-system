@@ -47,7 +47,7 @@
                         @if ($request->status === 'Pending')
                             <form action="{{ route('delivery-request.cancel', $request->id) }}" method="POST" onsubmit="return confirm('Cancel this request?')">
                                 @csrf
-                                @method('PATCH')
+                                @method('POST')
                                 <button type="submit" class="text-red-600 hover:underline">Cancel</button>
                             </form>
                         @else

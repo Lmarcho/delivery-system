@@ -19,3 +19,8 @@ Route::get('/delivery-request/create', [DeliveryRequestController::class, 'creat
 Route::post('/delivery-request', [DeliveryRequestController::class, 'store'])->name('delivery-request.store');
 Route::get('/delivery-requests', [DeliveryRequestController::class, 'index'])->name('delivery-request.index');
 Route::post('/delivery-request/{id}/cancel', [\App\Http\Controllers\DeliveryRequestController::class, 'cancel'])->name('delivery-request.cancel');
+
+
+Route::get('/delivery-request/vue', function () {
+    return view('delivery-request.vue');
+})->name('delivery-request.vue');
